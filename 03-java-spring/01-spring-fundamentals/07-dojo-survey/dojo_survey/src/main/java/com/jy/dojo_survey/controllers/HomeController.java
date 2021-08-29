@@ -15,8 +15,8 @@ public class HomeController {
 		session.invalidate();
 		return "index.jsp";
 	}
-	@RequestMapping(path="/submit", method=RequestMethod.POST)
 	
+	@RequestMapping(path="/submit", method=RequestMethod.POST)
 	private String submit(HttpSession session, 
 			RedirectAttributes redirectAttributes, 
 			@RequestParam(value="name", required=false) String name, 
@@ -34,8 +34,13 @@ public class HomeController {
 			session.setAttribute("comment", comment);
 			return "redirect:/result";
 		}
-		
 	}
+	
+	@RequestMapping(path="/submit")
+	private String submit() {
+		return "redirect:/";
+	}
+	
 	@RequestMapping("/result")
 	private String result() {
 		return "result.jsp";
