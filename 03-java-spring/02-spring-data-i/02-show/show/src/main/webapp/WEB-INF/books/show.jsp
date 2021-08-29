@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+
 <h1><c:out value="${book.title}"/></h1>
 <p>Description: <c:out value="${book.description}"/></p>
 <p>Language: <c:out value="${book.language}"/></p>

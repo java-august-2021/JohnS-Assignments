@@ -1,9 +1,6 @@
 package com.jy.show.controllers;
 
 import java.util.List;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,8 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jy.show.models.Book;
 import com.jy.show.services.BookService;
 
-// @RestController
-@Controller
+@RestController
 public class BooksApi {
     private final BookService bookService;
     public BooksApi(BookService bookService){
@@ -23,7 +19,6 @@ public class BooksApi {
     @RequestMapping("/api/books")
     public List<Book> index() {
         return bookService.allBooks();
-    	
     }
     
     @RequestMapping(value="/api/books", method=RequestMethod.POST)
@@ -38,10 +33,9 @@ public class BooksApi {
     }
     
     @RequestMapping("/api/books/{id}")
-    public String show(@PathVariable("id") Long id, Model model) {
+    public Book show(@PathVariable("id") Long id) {
         Book book = bookService.findBook(id);
-        model.addAttribute("book", book);
-        return "show.jsp";
+        return book;
     }
 
     @RequestMapping(value="/api/books/{id}", method=RequestMethod.PUT)
