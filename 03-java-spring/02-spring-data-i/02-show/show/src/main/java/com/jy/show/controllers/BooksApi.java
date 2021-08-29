@@ -1,16 +1,20 @@
-package com.jy.update_delete.controllers;
+package com.jy.show.controllers;
 
 import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jy.update_delete.models.Book;
-import com.jy.update_delete.services.BookService;
+import com.jy.show.models.Book;
+import com.jy.show.services.BookService;
 
-@RestController
+// @RestController
+@Controller
 public class BooksApi {
     private final BookService bookService;
     public BooksApi(BookService bookService){
@@ -19,6 +23,7 @@ public class BooksApi {
     @RequestMapping("/api/books")
     public List<Book> index() {
         return bookService.allBooks();
+    	
     }
     
     @RequestMapping(value="/api/books", method=RequestMethod.POST)
@@ -33,9 +38,10 @@ public class BooksApi {
     }
     
     @RequestMapping("/api/books/{id}")
-    public Book show(@PathVariable("id") Long id) {
+    public String show(@PathVariable("id") Long id, Model model) {
         Book book = bookService.findBook(id);
-        return book;
+        model.addAttribute("book", book);
+        return "show.jsp";
     }
 
     @RequestMapping(value="/api/books/{id}", method=RequestMethod.PUT)
