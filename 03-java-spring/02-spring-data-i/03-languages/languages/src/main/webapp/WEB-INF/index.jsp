@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>   
-        <%@ page isErrorPage="true" %>   
+    <%@ page isErrorPage="true" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +27,7 @@
         			<c:forEach items="${languages}" var="language">
         			<tr>
             			<td><a href="/languages/${language.id}"><c:out value="${language.name}"/></a></td>
-            			<td><c:out value="${langauge.creator}"/></td>
+            			<td><c:out value="${language.creator}"/></td>
             			<td><c:out value="${language.version}"/></td>
             			<td><a href="/languages/${language.id}/edit">Edit</a> |
             			 
