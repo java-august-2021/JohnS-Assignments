@@ -34,6 +34,7 @@ public class BooksController {
     public String newBook(@ModelAttribute("book") Book book) {
         return "/books/new.jsp";
     }
+    
     @RequestMapping(value="/books", method=RequestMethod.POST)
     public String create(@Valid @ModelAttribute("book") Book book, BindingResult result) {
         if (result.hasErrors()) {
