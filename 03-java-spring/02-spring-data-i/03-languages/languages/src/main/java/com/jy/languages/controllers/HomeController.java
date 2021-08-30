@@ -52,8 +52,8 @@ public class HomeController {
 	
 	@RequestMapping("/languages/{id}/edit")
 	public String edit(@PathVariable("id") Long id, Model model) {
-    	Language lang = languageService.findLang(id);
-    	model.addAttribute("language", lang);
+    	Language language = languageService.findLang(id);
+    	model.addAttribute("language", language);
 		return "edit.jsp";
 	}
 	

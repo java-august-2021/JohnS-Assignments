@@ -6,12 +6,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Edit <c:out value="${lang.name}"/></title>
+<title>Edit <c:out value="${language.name}"/></title>
 </head>
 <body>
 	<a href="/languages">Dashboard</a>
 	<h1>Edit Language</h1>
-			<form:form action="/languages/${lang.id}" method="post" modelAttribute="language">
+			<form:form action="/languages/${language.id}" method="post" modelAttribute="language">
 			<input type="hidden" name="_method" value="put">
 			
 			<form:label path="name">Name</form:label>
