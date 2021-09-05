@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -30,7 +31,8 @@ public class HomeController {
 		return "index.jsp";
 	}
 	
-    @RequestMapping(value="/languages", method=RequestMethod.POST)
+	@PostMapping("/languages")
+    // @RequestMapping(value="/languages", method=RequestMethod.POST)
     public String create(@Valid @ModelAttribute("language") Language language, BindingResult result, Model model) {
     	List<Language> langauges = languageService.allLangs();
 		model.addAttribute("languages", langauges);
